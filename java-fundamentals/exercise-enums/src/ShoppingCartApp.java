@@ -21,7 +21,7 @@ public class ShoppingCartApp {
             DELIVERED
         }
 
-        enum ShippingStatus {
+        enum ShippingType {
             STANDARD,
             TWO_DAY,
             OVERNIGHT
@@ -33,20 +33,26 @@ public class ShoppingCartApp {
         double productCost = 2.56;
         double productPrice = 4.99;
         int productQuantity = 78;
+        ShippingType shippingType = ShippingType.STANDARD;
+        OrderStatus orderStatus = OrderStatus.PENDING;
 
         //Calculate the total cost of the product based on the
         // inventory.
         double totalCost = productCost * productQuantity;
-        System.out.println(totalCost);
+        System.out.println("Total cost is: " + totalCost);
 
         // Calculate the profit margin of the product.
         double profitMargin = productPrice - productCost;
-        System.out.println(profitMargin);
+        System.out.println("Profit margin is: " + profitMargin);
 
         //Calculate the total potential profit.
         // total profit? profitMargin * productQuantity
         double totalProfit = profitMargin * productQuantity;
-        System.out.println(totalProfit);
+        System.out.println("Total profit is: " + String.format("%.2f", totalProfit));
+
+        System.out.println("Shipping type: " + shippingType);
+        System.out.println("Order status: " + orderStatus);
+
 
         //Final Message
         System.out.println("Thank you for shopping with your cart at the shopping-cart.net");
