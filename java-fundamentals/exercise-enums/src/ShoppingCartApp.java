@@ -11,8 +11,21 @@ public class ShoppingCartApp {
         //EXERCISE ASSIGNMENT HERE
         //Create enums for order status and shipping status.
         // Here are the options as per decisions made by the team:
-            //Order status: pending, processing, shipped, delivered
-            // Shipping status: standard, 2-day, overnight
+        //Order status: pending, processing, shipped, delivered
+        // Shipping status: standard, 2-day, overnight
+
+        enum OrderStatus {
+            PENDING,
+            PROCESSING,
+            SHIPPED,
+            DELIVERED
+        }
+
+        enum ShippingStatus {
+            STANDARD,
+            TWO_DAY,
+            OVERNIGHT
+        }
 
         //Assign variables to each of the elements from above.
         int productId = 1;
@@ -20,7 +33,7 @@ public class ShoppingCartApp {
         double productCost = 2.56;
         double productPrice = 4.99;
         int productQuantity = 78;
-        
+
         //Calculate the total cost of the product based on the
         // inventory.
         double totalCost = productCost * productQuantity;

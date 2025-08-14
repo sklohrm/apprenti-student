@@ -6,8 +6,15 @@ public class SeatReservation {
         //GENERAL
         //PREMIUM
         //VIP
+        enum SeatSection {
+            GENERAL,
+            PREMIUM,
+            VIP
+        }
 
         //2. Print each section’s corresponding integer value using the ordinal() method.
-
+        for (SeatSection section : SeatSection.values()) {
+            System.out.println(section + " is assigned value: " + section.ordinal());
+        }
     }
 }

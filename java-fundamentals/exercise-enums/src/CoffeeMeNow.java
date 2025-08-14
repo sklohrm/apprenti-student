@@ -3,13 +3,20 @@ public class CoffeeMeNow {
         //A café uses enums to manage coffee sizes.
 
         //1. Create an enum named CoffeeSize with three constants:
-            //SMALL
-            //MEDIUM
-            //LARGE
+        //SMALL
+        //MEDIUM
+        //LARGE
+        enum CoffeeSize {
+            SMALL,
+            MEDIUM,
+            LARGE
+        }
 
         //2. Declare and initialize a variable of type CoffeeSize to store a predefined coffee order.
+        CoffeeSize smallCoffee = CoffeeSize.SMALL;
 
         //3. Print the selected coffee size.
+        System.out.println("Selected Coffee Size: " + smallCoffee);
 
     }
 }
