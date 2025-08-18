@@ -1,10 +1,5 @@
 package org.example.shoppingcart;
 
-/**
- * 1. Add business name and contact info.
- * 2. Add item description.
- */
-
 public class ShoppingCartApp {
     enum OrderStatus {
         PENDING, PROCESSING, SHIPPED, DELIVERED
@@ -22,6 +17,14 @@ public class ShoppingCartApp {
         double productCost = 2.56;
         double productPrice = 4.99;
         int productQuantity = 78;
+
+        // 1. Add business name and contact info.
+        String businessName = "Pork Chop Palace";
+        // 2. Add item description.
+        String itemDescription = "Savory pork cutlet.";
+
+        System.out.println("Business Name: " + businessName);
+        System.out.println("Item Description: " + itemDescription);
 
         double totalCost = productCost * productQuantity;
         System.out.println(totalCost);
