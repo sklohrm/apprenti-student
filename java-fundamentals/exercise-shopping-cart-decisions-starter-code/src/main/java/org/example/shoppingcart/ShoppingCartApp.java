@@ -17,6 +17,12 @@ public class ShoppingCartApp {
         int productQuantity = 78;
         double totalCost = productPrice * productQuantity;
 
+        // New variables
+        double taxRate = .07;
+        double standardShipping = 2.00;
+        double twoDayShipping = 5.00;
+        double overnightShipping = 10.00;
+
         System.out.println("Product Price: " + productPrice);
         System.out.println("Product Quantity: " + productQuantity);
         System.out.println("Total Cost: " + totalCost);
@@ -33,12 +39,47 @@ public class ShoppingCartApp {
         System.out.print("Promo code for free shipping? ");
         String promoCode = console.nextLine();
 
+        if (totalCost > 100) {
+            // If order total is more than 500 apply discount 10%
+            if (totalCost > 500) {
+                totalCost *= .9;
+            } else {
+                // If order total is more than 100 apply discount 5%
+                totalCost *= .95;
+            }
+        }
+
+        // Charge tax if not exempt
+        if (taxExempt.equals("n")) {
+            totalCost *= (1 + taxRate);
+        }
+
+        // If promo code is valid apply free shipping unless overnight or two-day
+        switch (shipping) {
+            case "standard":
+                if (promoCode != null) {
+                    break;
+                } else {
+                    totalCost += 2.00;
+                    break;
+                }
+            case "overnight":
+                totalCost += 5.00;
+                break;
+            case "two-day":
+                totalCost += 10.00;
+                break;
+            default:
+                System.out.println("Invalid shipping type");
+                break;
+        }
+
         // Print details
         System.out.println("\nDetails:");
         System.out.println("Tax-exempt: " + taxExempt);
         System.out.println("Shipping: " + shipping);
         System.out.println("Promo code: " + promoCode);
-
+        System.out.println("Total Cost: " + totalCost);
         System.out.println("Bye");
     }
 }
