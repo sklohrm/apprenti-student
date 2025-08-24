@@ -8,7 +8,7 @@ public class Main {
     }
 
     private static void runTests() {
-        String[] inputs = {"water", "soda", "juice", ""};
+        String[] inputs = {"water", "soda", "juice", "WATER", "Tea", ""};
         String[] expectedOutputs = {
                 "You selected Water",
                 "You selected Soda",
@@ -30,12 +30,22 @@ public class Main {
                 System.out.println("FAIL: Expected '" + expected + "', got '" + actual + "'");
             }
         }
+    }
 
-        private static String selectDrink (String choice){
-            choice = choice.toLowerCase(); // Normalize input for case insensitivity
-            System.out.println("Received input: " + choice); // Debug print
+    private static String selectDrink(String choice) {
+        choice = choice.toLowerCase(); // Normalize input for case insensitivity
+        System.out.println("Received input: " + choice); // Debug print
 
-            // add switch
+        // add switch
+        switch (choice) {
+            case "water":
+                return "You selected Water";
+            case "soda":
+                return "You selected Soda";
+            case "juice":
+                return "You selected Juice";
+            default:
+                return "Invalid selection";
         }
     }
 }

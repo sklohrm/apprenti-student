@@ -1,65 +1,47 @@
 package org.example.shoppingcart;
 
-/**
- * Refactor the code to use the following methods:
- * 1. Display a list of choices from an array. Returns nothing. Needs an array
- * of choices (strings).
- * 2. Prompt the user for strings. Returns a string. Needs a string to prompt
- * the user with.
- * 3. Prompt the user for an integer. Returns an integer. Needs a string to
- * prompt the user with.
- *
- * Note: We will not create method(s) for calculating the total cost until we
- * learn more about Object-Oriented Programming and some additional data
- * structures.
- */
+import java.util.Scanner;
 
 public class ShoppingCartApp {
 
+  // I started with the shopping-cart-exception assignment, so I just copied that code over here because it
+  // covers all the requirements of this assignment plus extra.
+
+
+
   public static void main(String[] args) {
     System.out.println("Welcome to the shopping cart app!");
+    // Create the shipping addresses array
     String[] addresses = { "123 Main St", "456 Main St", "789 Main St" };
+    // Create an array to contain the product sizes
     String[] sizes = { "small", "medium", "large" };
 
     java.util.Scanner console = new java.util.Scanner(System.in);
     boolean confirm = false;
-    String taxExempt = "";
-    String shipping = "";
-    String promoCode = "";
+    String taxExempt;
+    String shipping;
+    String promoCode;
 
     while (!confirm) {
-      int addressIndex = 0;
-      int sizeIndex = 0;
+      int addressIndex;
+      int sizeIndex;
+
       // Prompt for tax exempt
-      System.out.println("Are you tax-exempt? (y/n)");
-      taxExempt = console.nextLine();
+      taxExempt = promptUserForString("Are you tax-exempt? (y/n)");
 
       // Prompt for shipping address
-      for (int i = 0; i < addresses.length; i++) {
-        System.out.println((i + 1) + ". " + addresses[i]);
-      }
-      System.out.println("Shipping address?");
-      String address = console.nextLine();
-      addressIndex = Integer.parseInt(address);
+      addressIndex = promptUserForInt("Shipping address?", addresses);
       // Prompt for shipping
-      System.out.println("Shipping? (standard/overnight/twoday)");
-      shipping = console.nextLine();
+      shipping = promptUserForString("Shipping? (standard/overnight/twoday)");
 
       // Prompt for order quantity
-      System.out.println("Order quantity?");
-      int orderQuantity = Integer.parseInt(console.nextLine());
+      int orderQuantity = promptUserForInt("Order quantity?");
 
       // Prompt for Size
-      for (int i = 0; i < sizes.length; i++) {
-        System.out.println((i + 1) + ". " + sizes[i]);
-      }
-      System.out.println("Size?");
-      String size = console.nextLine();
-      sizeIndex = Integer.parseInt(size);
+      sizeIndex = promptUserForInt("Size?", sizes);
 
       // Prompt for promo code
-      System.out.println("Promo code for free shipping?");
-      promoCode = console.nextLine();
+      promoCode = promptUserForString("Promo code for free shipping?");
 
       // Print details
       System.out.println("\nDetails:");
@@ -75,4 +57,54 @@ public class ShoppingCartApp {
 
     System.out.println("Bye");
   }
+
+  // Method for display choices
+  private static void displayChoices(String[] choices) {
+    for (int i = 0; i < choices.length; i++) {
+      System.out.println(i + 1 + ": " + choices[i]);
+    }
+  }
+
+  // Method for prompt user for string
+  private static String promptUserForString(String prompt) {
+    Scanner console = new java.util.Scanner(System.in);
+    System.out.println(prompt);
+    return console.nextLine();
+  }
+
+  // Method for prompt user for int
+  private static int promptUserForInt(String prompt) {
+    Scanner console = new java.util.Scanner(System.in);
+
+    // Try catch in a while loop to ensure input is an integer
+    while (true) {
+      System.out.println(prompt);
+      try {
+        return Integer.parseInt(console.nextLine());
+      } catch (Exception e) {
+        System.out.println("Please enter a valid number.");
+      }
+    }
+  }
+
+  private static int promptUserForInt(String prompt, String[] choices) {
+    Scanner console = new java.util.Scanner(System.in);
+    displayChoices(choices);
+
+    // Try catch in a while loop to ensure input is an integer in range
+    while (true) {
+      System.out.println(prompt);
+      try {
+        int index = Integer.parseInt(console.nextLine());
+        // Try to access selected index to force ArrayIndexOutOfBoundsException
+        String selected = choices[index - 1];
+        return index;
+      } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("The number you entered is not a valid option.");
+      } catch (Exception e) {
+        System.out.println("Please enter a valid number.");
+      }
+    }
+  }
+
 }

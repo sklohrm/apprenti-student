@@ -18,13 +18,12 @@ public class ShoppingCartApp {
     while (!confirm) {
       int addressIndex = 0;
       int sizeIndex = 0;
-      // Prompt for tax exempt
 
+      // Prompt for tax exempt
       taxExempt = promptUserForString("Are you tax-exempt? (y/n)");
 
       // Prompt for shipping address
-      displayChoices(addresses);
-      addressIndex = promptUserForInt("Shipping address?");
+      addressIndex = promptUserForInt("Shipping address?", addresses);
       // Prompt for shipping
       shipping = promptUserForString("Shipping? (standard/overnight/twoday)");
 
@@ -32,8 +31,7 @@ public class ShoppingCartApp {
       int orderQuantity = promptUserForInt("Order quantity?");
 
       // Prompt for Size
-      displayChoices(sizes);
-      sizeIndex = promptUserForInt("Size?");
+      sizeIndex = promptUserForInt("Size?", sizes);
 
       // Prompt for promo code
       promoCode = promptUserForString("Promo code for free shipping?");
@@ -70,7 +68,36 @@ public class ShoppingCartApp {
   // Method for prompt user for int
   private static int promptUserForInt(String prompt) {
     Scanner console = new java.util.Scanner(System.in);
-    System.out.println(prompt);
-    return Integer.parseInt(console.nextLine());
+
+    // Try catch in a while loop to ensure input is an integer
+    while (true) {
+      System.out.println(prompt);
+      try {
+        return Integer.parseInt(console.nextLine());
+      } catch (Exception e) {
+        System.out.println("Please enter a valid number.");
+      }
+    }
   }
+
+  private static int promptUserForInt(String prompt, String[] choices) {
+    Scanner console = new java.util.Scanner(System.in);
+    displayChoices(choices);
+
+    // Try catch in a while loop to ensure input is an integer in range
+    while (true) {
+      System.out.println(prompt);
+      try {
+        int index = Integer.parseInt(console.nextLine());
+        // Try to access selected index to force ArrayIndexOutOfBoundsException
+        String selected = choices[index - 1];
+        return index;
+      } catch (ArrayIndexOutOfBoundsException e) {
+        System.out.println("The number you entered is not a valid option.");
+      } catch (Exception e) {
+        System.out.println("Please enter a valid number.");
+      }
+    }
+  }
+
 }

@@ -23,7 +23,7 @@ public class UserRegistration {
                 System.out.println("Invalid input. Please enter a valid integer for age.");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
-            }
+            } 
         }
 
         // Handling email input
