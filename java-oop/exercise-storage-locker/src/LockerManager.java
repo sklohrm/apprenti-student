@@ -5,7 +5,9 @@ public class LockerManager {
     // Private variables
     private ArrayList<Locker> lockers;
 
-    // Constructor
+    /**
+     * Locker Manager which allows creation and deletion of lockers, as well as displaying all lockers.
+     */
     public LockerManager() {
         lockers = new ArrayList<>();
     }
@@ -17,8 +19,12 @@ public class LockerManager {
         }
     }
 
-
-    // Retrieves locker by its ID, returns null if specified locker doesn't exist
+    /**
+     * Retrieves locker by its ID, returns null if specified locker doesn't exist
+     * @param lockerID ID of the {@code Locker} to retrieve.
+     * @return         The {@code Locker} object that matches the given ID.
+     * <br>            Returns {@code null} if the Locker isn't found.
+     */
     public Locker getLocker(String lockerID) {
         for (Locker locker : lockers) {
             if (locker.getLockerID().equals(lockerID)) {
@@ -28,16 +34,17 @@ public class LockerManager {
         return null;
     }
 
-    // Removes a locker by its ID
+    /**
+     * Removes a locker by its ID
+     * @param lockerID The ID of the locker to remove.
+     */
     public void removeLocker(String lockerID) {
-        for (int i = 0; i < lockers.size(); i++) {
-            if (lockers.get(i).getLockerID().equals(lockerID)) {
-                lockers.remove(i);
-                break;
-            }
-        }
+        lockers.removeIf(locker -> locker.getLockerID().equals(lockerID));
     }
 
+    /**
+     * Display the information of all lockers.
+     */
     public void displayAllLockers() {
         for (Locker locker : lockers) {
             System.out.println(locker.toString());

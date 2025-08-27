@@ -16,24 +16,8 @@ public class Locker {
         return lockerID;
     }
 
-    public void setLockerID(String lockerID) {
-        this.lockerID = lockerID;
-    }
-
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
-
     public String getContents() {
         return contents;
-    }
-
-    public void setContents(String contents) {
-        this.contents = contents;
     }
 
     // Stores item. Only one item can be stored. Sets occupied to true.
@@ -54,6 +38,12 @@ public class Locker {
         return "Locker ID: " + lockerID + ", Occupied: " + isOccupied + ", Contents: " + contents;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
 
-
+        Locker other = (Locker) obj;
+        return this.lockerID.equals(other.lockerID);
+    }
 }
