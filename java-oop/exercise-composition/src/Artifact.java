@@ -12,6 +12,8 @@ public class Artifact {
         this.yearOfDiscovery = yearOfDiscovery;
     }
 
+    public Artifact(){}
+
     public String getName() {
         return name;
     }
@@ -47,15 +49,15 @@ public class Artifact {
     @Override
     public String toString() {
         if (discoverer.equals(curator)) {
-            return "Artifact: " + name
-                    + "\nDiscoverer & Curator: " + discoverer
-                    + "\nYear of Discovery: " + yearOfDiscovery;
+            return "Artifact: " + getName()
+                    + "\nDiscoverer & Curator: " + getDiscoverer()
+                    + "\nYear of Discovery: " + getYearOfDiscovery();
 
         } else {
-            return "Artifact: " + name
-                    + "\nDiscoverer: " + discoverer
-                    + "\nCurator: " + curator
-                    + "\nYear of Discovery: " + yearOfDiscovery;
+            return "Artifact: " + getName()
+                    + "\nDiscoverer: " + getDiscoverer()
+                    + "\nCurator: " + getCurator()
+                    + "\nYear of Discovery: " + getYearOfDiscovery();
         }
     }
 }

@@ -10,6 +10,8 @@ public class Person {
         this.specialty = specialty;
     }
 
+    public Person() {}
+
     public String getLastName() {
         return lastName;
     }
@@ -36,7 +38,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + ", " + specialty;
+        return getFirstName() + " " + getLastName() + ", " + getSpecialty();
     }
 
     @Override
