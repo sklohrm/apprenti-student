@@ -8,11 +8,7 @@ public class Main {
 
         // Variables
         Artifact artifact = new Artifact();
-        int yearOfDiscovery;
         Person discoverer = new Person();
-        String firstName;
-        String lastName;
-        String specialty;
 
         System.out.println("Welcome to the Museum's Artifact Deposit Page");
 
