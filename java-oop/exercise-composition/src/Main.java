@@ -7,10 +7,9 @@ public class Main {
     public static void main(String[] args) {
 
         // Variables
-        Artifact artifact;
-        String artifactName;
+        Artifact artifact = new Artifact();
         int yearOfDiscovery;
-        Person discoverer;
+        Person discoverer = new Person();
         String firstName;
         String lastName;
         String specialty;
@@ -19,13 +18,13 @@ public class Main {
 
         // Enter the name of a new Artifact
         System.out.println("Enter the name of the Artifact: ");
-        artifactName = input.nextLine();
+        artifact.setName(input.nextLine());
 
         // Enter the year of it's discovery
         System.out.println("Enter the year it was discovered: ");
         while (true) {
             try {
-                yearOfDiscovery = Integer.parseInt(input.nextLine());
+                artifact.setYearOfDiscovery(Integer.parseInt(input.nextLine()));
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid format, enter a number: ");
@@ -34,15 +33,15 @@ public class Main {
 
         // Enter the name and specialty of the discoverer
         System.out.println("Enter the first name of the discoverer:");
-        firstName = input.nextLine();
+        discoverer.setFirstName(input.nextLine());
 
         System.out.println("Enter the last name of the discoverer:");
-        lastName = input.nextLine();
+        discoverer.setLastName(input.nextLine());
 
         System.out.println("Enter the specialty of the discoverer: ");
-        specialty = input.nextLine();
+        discoverer.setSpecialty(input.nextLine());
 
-        discoverer = new Person(firstName, lastName, specialty);
+        artifact.setDiscoverer(discoverer);
 
         // If-else for whether discoverer is the curator
         while (true) {
@@ -50,21 +49,24 @@ public class Main {
             String choice = input.nextLine().trim();
 
             if (choice.equalsIgnoreCase("y")) {
-                artifact = new Artifact(artifactName, discoverer, discoverer, yearOfDiscovery);
+                artifact.setCurator(discoverer);
                 break;
             } else if (choice.equalsIgnoreCase("n")) {
+                // I use a second person because the Artifact's toString() calls .equals() on the Person class
+                // If all I did was change the names, It would still use the same class and think that the curator
+                // and discoverer are the same person.
+                Person curator = new Person();
+
                 System.out.println("Enter the first name of the curator: ");
-                firstName = input.nextLine();
+                curator.setFirstName(input.nextLine());
 
                 System.out.println("Enter the last name of the curator: ");
-                lastName = input.nextLine();
+                curator.setLastName(input.nextLine());
 
                 System.out.println("Enter the specialty of the curator: ");
-                specialty = input.nextLine();
+                curator.setSpecialty(input.nextLine());
 
-                Person curator = new Person(firstName, lastName, specialty);
-
-                artifact = new Artifact(artifactName, discoverer, curator, yearOfDiscovery);
+                artifact.setCurator(curator);
                 break;
             } else {
                 System.out.println("Invalid input. Enter 'y' or 'n'");

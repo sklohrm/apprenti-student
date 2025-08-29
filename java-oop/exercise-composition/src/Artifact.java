@@ -12,6 +12,8 @@ public class Artifact {
         this.yearOfDiscovery = yearOfDiscovery;
     }
 
+    public Artifact(){}
+
     public String getName() {
         return name;
     }

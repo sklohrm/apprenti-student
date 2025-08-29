@@ -10,6 +10,8 @@ public class Person {
         this.specialty = specialty;
     }
 
+    public Person() {}
+
     public String getLastName() {
         return lastName;
     }
