@@ -38,7 +38,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName + ", " + specialty;
+        return getFirstName() + " " + getLastName() + ", " + getSpecialty();
     }
 
     @Override
