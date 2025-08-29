@@ -1,8 +1,8 @@
 package org.example;
 
 public interface Connectable {
-    public void turnOn();
-    public void turnOff();
-    public boolean getState();
-    public String getName();
+    void turnOn();
+    void turnOff();
+    boolean getState();
+    String getName();
 }
