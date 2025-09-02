@@ -4,25 +4,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private double GPA;
-    private String homeroomTeacherFirstName;
-    private String homeroomTeacherLastName;
-
-
-    public String getHomeroomTeacherLastName() {
-        return homeroomTeacherLastName;
-    }
-
-    public void setHomeroomTeacherLastName(String homeroomTeacherLastName) {
-        this.homeroomTeacherLastName = homeroomTeacherLastName;
-    }
-
-    public String getHomeroomTeacherFirstName() {
-        return homeroomTeacherFirstName;
-    }
-
-    public void setHomeroomTeacherFirstName(String homeroomTeacherFirstName) {
-        this.homeroomTeacherFirstName = homeroomTeacherFirstName;
-    }
+    private Teacher homeroomTeacher;
 
     public double getGPA() {
         return GPA;
@@ -48,4 +30,11 @@ public class Student {
         this.firstName = firstName;
     }
 
+    public Teacher getHomeroomTeacher() {
+        return homeroomTeacher;
+    }
+
+    public void setHomeroomTeacher(Teacher homeroomTeacher) {
+        this.homeroomTeacher = homeroomTeacher;
+    }
 }
