@@ -3,6 +3,8 @@ public class GuessingGame {
 
         // I didn't see any problems with duplicated code in this file. The only change that I made was to call for
         // getPositiveMoney so that I could test that it works.
+        // UPDATE: Followed your implementation of getNameWithDefault, but left the number logic in this class just
+        // so that both int methods will be called.
 
         ConsoleIO myIO = new ConsoleIO();
         String name, favoriteColor, favoriteAnimal;
@@ -13,12 +15,7 @@ public class GuessingGame {
 
         myIO.writeMessage("Please answer a series of questions.");
 
-        name = myIO.getInput("What is your name?");
-
-        if (name == null || name.isEmpty()) {
-            myIO.writeMessage("It's okay if you don't want to tell me your name.");
-            name = "Nobody";
-        }
+        name = myIO.getNameWithDefault("What is your name?", "Nobody");
 
         favoriteColor = myIO.getInput("What's your favorite color?");
 
