@@ -14,7 +14,7 @@ public class ConsoleIO {
     }
 
     public static double promptDouble(String message) {
-        double result = 0;
+        double result;
         while (true) {
             try {
                 result = Double.parseDouble(promptString(message));
