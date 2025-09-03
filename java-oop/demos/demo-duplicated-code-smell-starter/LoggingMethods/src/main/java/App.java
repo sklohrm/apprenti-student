@@ -1,24 +1,24 @@
-import java.time.LocalDateTime;
-
 public class App {
     public static void main(String[] args) {
         Order[] orders = setupOrders();
+        Logger logger = new Logger();
 
-        System.out.println("Screen Log for starting processing orders " +
-                " : at timestamp: " + LocalDateTime.now());
+        logger.setState(LogState.START);
+        logger.log("Processing Orders");
 
         for(Order o: orders) {
-            System.out.println("Screen Log for Order: " +
-                    o.getOrderId() +
-                    " : at timestamp: " + LocalDateTime.now());
+
+            logger.setState(LogState.PROCESSING_ORDER);
+            logger.log("Processing Order: " + o.getOrderId());
+
             for(Item i: o.getItems()) {
-                System.out.println("Screen Log for Processing Order: " + o.getOrderId() + " Item : " + i.itemName);
+                logger.setState(LogState.PROCESSING_ITEM);
+                logger.log("Processing Order: " + o.getOrderId() + " Item : " + i.itemName);
             }
         }
 
-        System.out.println("Screen Log for ending processing orders " +
-                " : at timestamp: " + LocalDateTime.now());
-
+        logger.setState(LogState.END);
+        logger.log("Ending Processing Orders");
     }
 
     private static Order[] setupOrders() {

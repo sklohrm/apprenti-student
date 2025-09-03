@@ -1,6 +1,9 @@
 public class GuessingGame {
     public static void main(String[] args) {
 
+        // I didn't see any problems with duplicated code in this file. The only change that I made was to call for
+        // getPositiveMoney so that I could test that it works.
+
         ConsoleIO myIO = new ConsoleIO();
         String name, favoriteColor, favoriteAnimal;
         int favoriteNumber;
@@ -12,7 +15,7 @@ public class GuessingGame {
 
         name = myIO.getInput("What is your name?");
 
-        if (name == null || name.length() == 0) {
+        if (name == null || name.isEmpty()) {
             myIO.writeMessage("It's okay if you don't want to tell me your name.");
             name = "Nobody";
         }
@@ -30,7 +33,7 @@ public class GuessingGame {
 
         favoriteAnimal = myIO.getNonNullNonEmptyString("What is your favorite animal?");
 
-        cash = myIO.getMoney();
+        cash = myIO.getPositiveMoney();
 
         myIO.writeMessage("Thanks for playing my game!");
         myIO.writeMessage("Your name is: " + name);
