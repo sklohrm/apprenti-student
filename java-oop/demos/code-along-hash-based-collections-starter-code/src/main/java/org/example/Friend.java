@@ -24,4 +24,9 @@ public class Friend {
     public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + this.name + " Birthday: " + this.birthday;
+    }
 }
