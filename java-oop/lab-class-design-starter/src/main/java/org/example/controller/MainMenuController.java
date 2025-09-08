@@ -8,9 +8,9 @@ import org.example.repo.ArtistRepo;
 import org.example.view.ConsoleIO;
 
 public class MainMenuController {
-    ConsoleIO io;
-    AlbumRepo albums;
-    ArtistRepo artists;
+    private ConsoleIO io;
+    private AlbumRepo albums;
+    private ArtistRepo artists;
     private static final int CHOICE_VIEW_ALL_ALBUMS = 1;
     private static final int CHOICE_VIEW_ALBUMS_BY_ARTIST = 2;
     private static final int CHOICE_VIEW_ALBUM = 3;
@@ -34,6 +34,7 @@ public class MainMenuController {
 
         while (running) {
             printMainMenuHeader();
+            // Only use of IO, how do we handle this with the view
             int choice = io.getIntegerInBetween("> ", MIN_CHOICE, MAX_CHOICE);
 
             switch (choice) {
@@ -75,6 +76,8 @@ public class MainMenuController {
             io.writeMessage(artist.getId() + "  -  " + artist.getName());
         }
 
+        // View.displayArtists(artists);
+
         int choice = io.getInteger("Select an artist");
         Artist artist = artists.getArtist(choice);
 
@@ -83,11 +86,15 @@ public class MainMenuController {
             return;
         }
 
+        // Artist artist = artists.getArtist(io.getInteger("Select an artist"));
+
         Album[] discography = albums.getAlbumsByArtist(artist);
         if (discography.length == 0) {
             io.writeMessage("No albums by this artist exist.");
             return;
         }
+
+        //
 
         for (Album album : discography) {
             io.writeMessage(album.getId() + "  -  " + album.getTitle());

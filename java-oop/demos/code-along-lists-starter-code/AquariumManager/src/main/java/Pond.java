@@ -43,7 +43,6 @@ public class Pond implements Exhibit{
         this.hasFountain = hasFountain;
     }
 
-`
     @Override
     public String getDescription() {
         return "The " + name +
@@ -53,5 +52,5 @@ public class Pond implements Exhibit{
     @Override
     public boolean isOpen() {
         return true;
-    }`
+    }
 }

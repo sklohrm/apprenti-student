@@ -18,8 +18,12 @@ public class App
         ConsoleIO io = new ConsoleIO();
         AlbumRepo albums = AlbumRepoFactory.instance();
         ArtistRepo artists = ArtistRepoFactory.instance();
+        // UserRepo users = UserRepoFactory.instance();
+        // Config appConfig = new Config(albums, artists);
 
+        // AppView appView = new AppView(io);
         MainMenuController mainMenu = new MainMenuController(io, albums, artists);
+        // MainMenuController mainMenu = new MainMenuController(config, appView);
         mainMenu.run();
 
 
