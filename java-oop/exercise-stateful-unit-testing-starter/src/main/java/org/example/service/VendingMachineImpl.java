@@ -50,7 +50,9 @@ public class VendingMachineImpl implements VendingMachine {
             return result;
         }
 
-        Product product = bin.get(1);
+        // Product can not be removed when there is only one left.
+        // Product product = bin.get(1);
+        Product product = bin.get(0);
 
         if (product.getPrice() > customerMoney) {
             result.setErrorMessage("Insufficient funds.  Please insert " + (product.getPrice() - customerMoney));
@@ -58,8 +60,18 @@ public class VendingMachineImpl implements VendingMachine {
             return result;
         }
 
-        bin.remove(1);
+        // Same problem here.
+        bin.remove(0);
+
+        // Added this check rather than putting a null check into the ConsoleUI. Resolves crash when
+        // trying to display a bin that is empty.
+        if (bin.isEmpty()) {
+            bins.remove(binId);
+        }
+
         customerMoney -= product.getPrice();
+        // Added this make the moneyBin increase by the cost of the item
+        moneyBin += product.getPrice();
 
         result.setPayload(product);
         result.setSuccess(true);
@@ -82,7 +94,8 @@ public class VendingMachineImpl implements VendingMachine {
     public void loadProduct(String binId, Product product, int quantity) {
         List<Product> products = new ArrayList<>();
         product.setBinId(binId);
-        for (int i = 1; i < quantity; i++) {
+        // Load product stopped one element short.
+        for (int i = 1; i <= quantity; i++) {
             products.add(Product.clone(product));
         }
 
