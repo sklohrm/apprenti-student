@@ -31,6 +31,7 @@ public class App
         bin.vendProduct();
 
         // ERROR
+        // Console prints that the bin is empty instead of crashing now.
         bin.vendProduct();
     }
 }
