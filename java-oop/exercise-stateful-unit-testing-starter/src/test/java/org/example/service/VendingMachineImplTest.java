@@ -1,7 +1,7 @@
 package org.example.service;
 
 import org.example.model.Product;
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,23 +13,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VendingMachineImplTest {
 
-    private VendingMachineImpl testVM;
-    private Product testApple;
-    private Product testCandyBar;
-    private Product testSoda;
+    VendingMachine vm;
+    static Product apple;
+    static Product candyBar;
+    static Product soda;
+
+    @BeforeAll
+    static void buildProducts() {
+        apple = new Product("Apple", .25);
+        candyBar = new Product("Candy Bar", 1.00);
+        soda = new Product("Soda", .50);
+    }
 
     @BeforeEach
     void setUp() {
-        testVM = new VendingMachineImpl();
+        vm = new VendingMachineImpl();
 
-        testApple = new Product("Apple", .25);
-        testCandyBar = new Product("Candy Bar", 1.00);
-        testSoda = new Product("Soda", .50);
+        vm.loadProduct("A1", apple, 10);
+        vm.loadProduct("A2", candyBar, 10);
 
-        testVM.loadProduct("A1", testApple, 10);
-        testVM.loadProduct("A2", testCandyBar, 10);
-
-        testVM.addMoney(50.00);
+        vm.addMoney(50.00);
     }
 
     @Test
@@ -40,7 +43,7 @@ class VendingMachineImplTest {
         expected.add("A2");
 
         // Act
-        List<String> actual = testVM.getBinIds();
+        List<String> actual = vm.getBinIds();
 
         // Assert
         assertEquals(Set.copyOf(expected), Set.copyOf(actual));
@@ -50,11 +53,11 @@ class VendingMachineImplTest {
     @Test
     void testGetBinContents() {
         // Arrange
-        Product expected = testApple;
+        Product expected = apple;
         String testBinID = "A1";
 
         // Act
-        Product actual = testVM.getBinContents(testBinID);
+        Product actual = vm.getBinContents(testBinID);
 
         // Assert
         assertEquals(expected, actual);
@@ -64,7 +67,7 @@ class VendingMachineImplTest {
     @Test
     void testGetBinQuantity() {
         // Assert
-        assertEquals(10, testVM.getBinQuantity("A1"));
+        assertEquals(10, vm.getBinQuantity("A1"));
     }
 
     @Test
@@ -75,9 +78,9 @@ class VendingMachineImplTest {
 
         // Act
         for (int i = 10; i > 0; i--) {
-            testVM.vend("A1");
+            vm.vend("A1");
             expected = i - 1;
-            actual = testVM.getBinQuantity("A1");
+            actual = vm.getBinQuantity("A1");
             // Assert
             assertEquals(expected, actual);
         }
@@ -88,8 +91,8 @@ class VendingMachineImplTest {
         double expected = 0.25;
 
         // Act
-        testVM.vend("A1");
-        double actual = testVM.getMoneyBinContents();
+        vm.vend("A1");
+        double actual = vm.getMoneyBinContents();
 
         // Assert
         assertEquals(expected, actual);
@@ -102,8 +105,8 @@ class VendingMachineImplTest {
         int expected = 10;
 
         // Act
-        testVM.loadProduct("A3", testSoda, 10);
-        int actual = testVM.getBinQuantity("A3");
+        vm.loadProduct("A3", soda, 10);
+        int actual = vm.getBinQuantity("A3");
 
         // Assert
         assertEquals(expected, actual);
