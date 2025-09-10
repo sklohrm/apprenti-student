@@ -31,7 +31,8 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public int getBinQuantity(String binId) {
-        return bins.get(binId).size();
+        // Returns one less so that one Product remains for reference
+        return bins.get(binId).size() - 1;
     }
 
     @Override
@@ -44,7 +45,8 @@ public class VendingMachineImpl implements VendingMachine {
             return result;
         }
 
-        if (bin.isEmpty()) {
+        // First Product stays for reference
+        if (bin.size() == 1) {
             result.setErrorMessage("Bin is empty");
             result.setSuccess(false);
             return result;
@@ -59,7 +61,11 @@ public class VendingMachineImpl implements VendingMachine {
         }
 
         bin.remove(1);
+
+
         customerMoney -= product.getPrice();
+        // Added this make the moneyBin increase by the cost of the item
+        moneyBin += product.getPrice();
 
         result.setPayload(product);
         result.setSuccess(true);
@@ -82,7 +88,8 @@ public class VendingMachineImpl implements VendingMachine {
     public void loadProduct(String binId, Product product, int quantity) {
         List<Product> products = new ArrayList<>();
         product.setBinId(binId);
-        for (int i = 1; i < quantity; i++) {
+        // Load product stopped one element short.
+        for (int i = 0; i <= quantity; i++) {
             products.add(Product.clone(product));
         }
 
