@@ -11,13 +11,16 @@ public class Printer {
     private String name;
     private PrinterStatus status;
     private String printModelName;
+    private String id;
     public static final int cyclesPerWarmup = 1;
     public static final int cyclesPerPrint = 2;
 
-    public Printer(String name) {
+    public Printer(String id, String name) {
+        setId(id);
         setName(name);
         setStatus(PrinterStatus.READY);
     }
+
     public PrinterStatus getStatus() {
         return status;
     }
@@ -49,7 +52,16 @@ public class Printer {
         this.name = name;
     }
 
-    public String toString() {
-        return name + ": " + status;
+    public String getId() {
+        return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String toString() {
+        return "ID: " + id + " | Name: " + name + " | Status: " + status;
+    }
+
 }

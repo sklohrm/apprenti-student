@@ -37,7 +37,7 @@ public class ConsoleIO {
 
         while (!validInput) {
             result = getString(prompt);
-            if (result != null && result.length() > 0) {
+            if (result != null && !result.isEmpty()) {
                 validInput = true;
             }
         }
