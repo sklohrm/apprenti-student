@@ -1,7 +1,10 @@
 package org.example;
 
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,8 +66,8 @@ class VendingMachineBin {
 
     // Method to vend (dispense) a product from the bin (Contains Bug)
     public Product vendProduct() {
-        Product result = products.get(1); // ERROR: This fails when only one item is left
-        products.remove(1); // ERROR: Trying to remove an item that may not exist
+        Product result = products.getFirst(); // ERROR: This fails when only one item is left
+        products.removeFirst(); // ERROR: Trying to remove an item that may not exist
         return result;
     }
 }
@@ -101,28 +104,42 @@ public class Main {
 
 // Step 4: Create Unit Tests in VendingMachineBinTest (Will Fail)
 class VendingMachineBinTest {
-    @Test
-    void vendProduct() {
-        // Create a new VendingMachineBin instance
-        VendingMachineBin bin = new VendingMachineBin();
 
-        // Create a Product instance
-        Product apple = new Product();
-        apple.setItemName("Apple");
-        apple.setPrice(0.25);
+    VendingMachineBin vmb = new VendingMachineBin();
+    Product apple = new Product("Apple", 0.25);
+    List<Product> productList;
 
-        // Load multiple products into the vending machine
-        bin.loadProduct(apple);
-        bin.loadProduct(Product.clone(apple));
-        bin.loadProduct(Product.clone(apple));
-        bin.loadProduct(Product.clone(apple));
-        bin.loadProduct(Product.clone(apple));
+    @BeforeEach
+    void loadVendingMachineBin() {
 
-        // Use assertDoesNotThrow() to confirm that vending products does not throw an error.
-        assertDoesNotThrow(() -> bin.vendProduct());
-        assertDoesNotThrow(() -> bin.vendProduct());
-        assertDoesNotThrow(() -> bin.vendProduct());
-        assertDoesNotThrow(() -> bin.vendProduct());
-        assertDoesNotThrow(() -> bin.vendProduct());
+        productList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            Product tempApple = Product.clone(apple);
+            vmb.loadProduct(tempApple);
+            productList.add(tempApple);
+        }
     }
+
+    @Test
+    void testProductCountMatchesInitialization() {
+        assertEquals(3, vmb.getProducts().size());
+    }
+
+    @Test
+    void testVendProductCountMatches() {
+        // Act
+        vmb.vendProduct();
+        assertEquals(2, vmb.getProducts().size());
+        vmb.vendProduct();
+        assertEquals(1, vmb.getProducts().size());
+        vmb.vendProduct();
+        assertEquals(0, vmb.getProducts().size());
+    }
+
+    @Test
+    void loadProductReturnsCorrectList() {
+        assertEquals(productList, vmb.getProducts());
+    }
+
 }
