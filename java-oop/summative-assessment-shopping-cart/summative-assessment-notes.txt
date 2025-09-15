@@ -1,0 +1,46 @@
+Model
+- Product
+	- String id
+	- String name
+	- double price
+	- Getters and Setters
+- ICartService
+	- void addItem(Product, int quantity)
+	- void removeItem(Product, int quantity)
+	- List<Product> getItems()
+	- double checkout()
+- CartService
+	- Map<String, Product> cart
+	- addItem
+- ProductRepo
+	- Constructor(List<Products)
+	- List<Product> products
+	- products getProducts()
+	- void setProducts(List<Product>)
+
+Where does quantity go? Model to hold product and quantity?
+
+View
+- ConsoleView
+	- displayMenu()
+	- getMenuChoice(String prompt) overload int/String?
+	- void displayCart(List<Product>)
+	- void displayProducts(List<Product>)
+- IO?
+
+Controller
+- ShoppingCartController
+	- ICartService
+	- ConsoleView
+	- Constructor(ICartService, ConsoleView, ProductList?)
+	- void run()
+		- ConsoleView.displayMenu()
+		- ConsoleView.getMenuChoice()
+	- void add()
+		- ConsoleView.displayProducts(
+		- ICartService.addItem(ConsoleView.displayP)
+	- void remove()
+	- void checkout()
+
+What holds the available products? Map of <String id, Product> ?
+List of Products?
