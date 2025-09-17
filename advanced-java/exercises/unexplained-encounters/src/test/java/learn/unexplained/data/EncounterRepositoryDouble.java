@@ -20,4 +20,14 @@ public class EncounterRepositoryDouble implements EncounterRepository {
     public boolean deleteById(int encounterId) throws DataAccessException {
         return false;
     }
+
+    @Override
+    public List<Encounter> findByType(EncounterType encounterType) throws DataAccessException {
+        return List.of(new Encounter(2, encounterType, "1/1/2015", "test description", 1));
+    }
+
+    @Override
+    public boolean update(Encounter encounter) throws DataAccessException {
+        return false;
+    }
 }
