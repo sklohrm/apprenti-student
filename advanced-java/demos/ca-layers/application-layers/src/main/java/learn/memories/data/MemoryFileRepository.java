@@ -9,7 +9,7 @@ import java.util.List;
 public class MemoryFileRepository implements MemoryRepository {
 
     private final String filePath;
-    private final String delimeter = "~";
+    private final String delimiter = "~";
 
     public MemoryFileRepository(String filePath) {
         this.filePath = filePath;
@@ -50,7 +50,7 @@ public class MemoryFileRepository implements MemoryRepository {
     public List<Memory> findShareable(boolean shareable) throws DataAccessException {
         List<Memory> result = new ArrayList<>();
         for (Memory memory : findAll()) {
-            if (memory.isShareable()) {
+            if (memory.isShareable() == shareable) {
                 result.add(memory);
             }
         }
@@ -96,7 +96,7 @@ public class MemoryFileRepository implements MemoryRepository {
 
     //Helper methods
     private Memory lineToMemory(String line) {
-        String[] fields = line.split(delimeter);
+        String[] fields = line.split(delimiter);
 
         return new Memory(
                 Integer.parseInt(fields[0]),
@@ -108,10 +108,10 @@ public class MemoryFileRepository implements MemoryRepository {
 
     private String memoryToLine(Memory memory) {
         StringBuilder result = new StringBuilder(100);
-        result.append(memory.getId()).append(delimeter);
-        result.append(cleanField(memory.getFrom())).append(delimeter);
-        result.append(cleanField(memory.getContent())).append(delimeter);
-        result.append(memory.isShareable()).append(delimeter);
+        result.append(memory.getId()).append(delimiter);
+        result.append(cleanField(memory.getFrom())).append(delimiter);
+        result.append(cleanField(memory.getContent())).append(delimiter);
+        result.append(memory.isShareable()).append(delimiter);
         return result.toString();
     }
 

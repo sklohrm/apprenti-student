@@ -1,0 +1,15 @@
+1~Coach Danahar~Really appreciated your hustle and dedication.~true
+2~Maya Green~That road trip with you was unforgettable.~true
+3~Eli Torres~You still owe me a coffee from last week!~false
+4~Lena Brooks~Your laugh is seriously the best thing ever.~true
+5~Dylan Scott~Stop stealing my fries every time we hang out.~false
+6~Harper James~Thanks for always picking up the phone, no matter what.~true
+7~Nico Rivera~You totally bailed on movie night, not cool.~false
+8~Chloe Bennett~That surprise gift made my whole day.~true
+9~Owen Carter~Don’t forget you promised to help me move boxes.~false
+10~Ava Reed~You always know how to cheer me up.~true
+11~Leo Martinez~You forgot your jacket at my place again.~false
+12~Sophie Clark~I admire how fearless you are with new adventures.~true
+13~Max Turner~You never text back on time, do you?~false
+14~Zara Lewis~That story you told had me laughing for hours.~true
+15~Finn Hayes~You still haven’t paid me back for pizza night.~false
