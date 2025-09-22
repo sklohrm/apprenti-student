@@ -115,4 +115,13 @@ class EncounterFileRepositoryTest {
         assertEquals(1, repository.findByType(EncounterType.UFO).size());
     }
 
+    @Test
+    void testFindById() throws DataAccessException {
+        Encounter actual = repository.findById(2);
+        assertNotNull(actual);
+
+        actual = repository.findById(-1);
+        assertNull(actual);
+    }
+
 }

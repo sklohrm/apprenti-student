@@ -88,6 +88,17 @@ public class EncounterFileRepository implements EncounterRepository {
         return false;
     }
 
+    @Override
+    public Encounter findById(int encounterId) throws DataAccessException {
+        List<Encounter> all = findAll();
+        for (Encounter encounter : all) {
+            if (encounter.getEncounterId() == encounterId) {
+                return encounter;
+            }
+        }
+        return null;
+    }
+
     private int getNextId(List<Encounter> allEncounters) {
         int nextId = 0;
         for (Encounter e : allEncounters) {

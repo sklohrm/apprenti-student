@@ -4,7 +4,6 @@ import learn.memories.models.Memory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,7 +32,6 @@ public class MemoryFileRepositoryTest {
                 "That road trip with you was unforgettable.",
                 true
         );
-
     }
 
     @Test

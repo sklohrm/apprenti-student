@@ -18,7 +18,8 @@ public class EncounterRepositoryDouble implements EncounterRepository {
 
     @Override
     public boolean deleteById(int encounterId) throws DataAccessException {
-        return false;
+        Encounter encounter = findById(encounterId);
+        return encounter != null;
     }
 
     @Override
@@ -28,6 +29,16 @@ public class EncounterRepositoryDouble implements EncounterRepository {
 
     @Override
     public boolean update(Encounter encounter) throws DataAccessException {
-        return false;
+        return findById(encounter.getEncounterId()) != null;
+    }
+
+    @Override
+    public Encounter findById(int encounterId) throws DataAccessException {
+        for (Encounter encounter : findAll()) {
+            if (encounter.getEncounterId() == encounterId) {
+                return encounter;
+            }
+        }
+        return null;
     }
 }
