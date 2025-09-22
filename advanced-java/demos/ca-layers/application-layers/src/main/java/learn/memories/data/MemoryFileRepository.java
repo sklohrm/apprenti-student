@@ -97,7 +97,6 @@ public class MemoryFileRepository implements MemoryRepository {
     //Helper methods
     private Memory lineToMemory(String line) {
         String[] fields = line.split(delimiter);
-
         return new Memory(
                 Integer.parseInt(fields[0]),
                 fields[1],

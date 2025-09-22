@@ -3,6 +3,7 @@ package learn.unexplained.domain;
 import learn.unexplained.data.DataAccessException;
 import learn.unexplained.data.EncounterRepository;
 import learn.unexplained.models.Encounter;
+import learn.unexplained.models.EncounterType;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,6 +42,48 @@ public class EncounterService {
         return result;
     }
 
+    // 6. Add the following Service Methods:
+    // a. Find By Type
+    // b. update
+    // c. deleteById
+    public List<Encounter> findByType(EncounterType encounterType) throws DataAccessException {
+        return repository.findByType(encounterType);
+    }
+
+    public EncounterResult deleteById(int encounterId) throws DataAccessException {
+        EncounterResult result = new EncounterResult();
+        Encounter encounterToDelete = repository.findById(encounterId);
+
+        if (!repository.deleteById(encounterId)) {
+            result.addErrorMessage("Encounter " + encounterId + " not found.");
+        } else {
+            result.setPayload(encounterToDelete);
+        }
+
+        return result;
+    }
+
+
+    public EncounterResult update(Encounter encounter) throws DataAccessException {
+        EncounterResult result = validate(encounter);
+
+        // Update specific validation
+        if (encounter.getEncounterId() <= 0) {
+            result.addErrorMessage("Encounter ID is required.");
+        }
+
+        if (result.isSuccess()) {
+            if (repository.update(encounter)) {
+                result.setPayload(encounter);
+            } else {
+                result.addErrorMessage("Encounter ID " + encounter.getEncounterId() + " was not found.");
+            }
+        }
+
+        return result;
+    }
+
+
     private EncounterResult validate(Encounter encounter) {
 
         EncounterResult result = new EncounterResult();
@@ -63,4 +106,6 @@ public class EncounterService {
 
         return result;
     }
+
+
 }

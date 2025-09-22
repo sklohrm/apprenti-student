@@ -31,7 +31,7 @@ public class View {
     }
 
     public void printAllEncounters(List<Encounter> encounters) {
-        printHeader(MenuOption.DISPLAY_ALL.getMessage());
+        printHeader("All Encounters");
         if (encounters == null || encounters.size() == 0) {
             System.out.println();
             System.out.println("No encounters found.");
@@ -50,7 +50,7 @@ public class View {
     public void printResult(EncounterResult result) {
         if (result.isSuccess()) {
             if (result.getPayload() != null) {
-                System.out.printf("Encounter Id %s added.%n", result.getPayload().getEncounterId());
+                System.out.printf("Operation Complete: Encounter ID %s.%n", result.getPayload().getEncounterId());
             }
         } else {
             printHeader("Errors");
@@ -68,6 +68,31 @@ public class View {
         encounter.setWhen(readRequiredString("When:"));
         encounter.setDescription(readRequiredString("Description:"));
         return encounter;
+    }
+
+    public Encounter editEncounter(Encounter encounter) {
+        printHeader("Update");
+        encounter.setType(readType());
+        encounter.setOccurrences(readInt("Number of occurrences:"));
+        encounter.setWhen(readRequiredString("When:"));
+        encounter.setDescription(readRequiredString("Description:"));
+
+        return encounter;
+    }
+
+    public Encounter chooseEncounter(List<Encounter> encounters) {
+        printAllEncounters(encounters);
+        Encounter result = null;
+        if (!encounters.isEmpty()) {
+            int encounterId = readInt("Choose an Encounter ID: ");
+            for (Encounter encounter : encounters) {
+                if (encounter.getEncounterId() == encounterId) {
+                    result = encounter;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     private String readString(String message) {
@@ -114,7 +139,7 @@ public class View {
         return result;
     }
 
-    private EncounterType readType() {
+    public EncounterType readType() {
         int index = 1;
         for (EncounterType type : EncounterType.values()) {
             System.out.printf("%s. %s%n", index++, type);

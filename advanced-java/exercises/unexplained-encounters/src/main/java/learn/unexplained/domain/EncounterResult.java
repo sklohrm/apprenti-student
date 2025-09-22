@@ -8,7 +8,8 @@ import java.util.Objects;
 
 public class EncounterResult {
 
-    private ArrayList<String> messages = new ArrayList<>();
+    private List<String> messages = new ArrayList<>();
+
     private Encounter payload;
 
     public Encounter getPayload() {
