@@ -54,7 +54,7 @@ class Exercise04Test {
                 new BigDecimal("3.3"),
                 new BigDecimal("4.4")
         };
-        assertEquals(new BigDecimal("9.9"), instance.sum(values));
+        assertEquals(new BigDecimal("9.9").setScale(4), instance.sum(values));
 
         values = new BigDecimal[]{
                 new BigDecimal("22.2"),
