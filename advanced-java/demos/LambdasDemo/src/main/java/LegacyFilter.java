@@ -4,7 +4,9 @@ import java.util.List;
 public class LegacyFilter {
 
     AddressCollection addresses = new AddressCollection();
+
     public void filterAddresses() {
+
         List<Address> addressesByCity = new ArrayList<>();
         for (Address a : addresses.addressList) {
             if (a.getCity().equalsIgnoreCase("Philadelphia")) {
