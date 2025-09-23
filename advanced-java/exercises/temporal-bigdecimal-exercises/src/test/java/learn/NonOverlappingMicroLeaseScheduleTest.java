@@ -116,4 +116,50 @@ class NonOverlappingMicroLeaseScheduleTest {
             end = start.plusDays(1);
         }
     }
+
+    @Test
+    void shouldAddWithMultipleExisting() {
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 1, 1, 0, 0),
+                LocalDateTime.of(2021, 2, 1, 0, 0)
+        )));
+
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 2, 2, 0, 0),
+                LocalDateTime.of(2021, 3, 1, 0, 0)
+        )));
+
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 3, 10, 0, 0),
+                LocalDateTime.of(2021, 4, 1, 0, 0)
+        )));
+
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 3, 2, 0, 0),
+                LocalDateTime.of(2021, 3, 9, 0, 0)
+        )));
+    }
+
+    @Test
+    void shouldNotAddOverlapWithMultipleExisting() {
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 1, 1, 0, 0),
+                LocalDateTime.of(2021, 2, 1, 0, 0)
+        )));
+
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 2, 2, 0, 0),
+                LocalDateTime.of(2021, 3, 1, 0, 0)
+        )));
+
+        assertTrue(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 3, 10, 0, 0),
+                LocalDateTime.of(2021, 4, 1, 0, 0)
+        )));
+
+        assertFalse(schedule.add(new MicroLease(
+                LocalDateTime.of(2021, 3, 2, 0, 0),
+                LocalDateTime.of(2021, 3, 20, 0, 0)
+        )));
+    }
 }
