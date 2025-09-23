@@ -3,10 +3,12 @@ package learn.unexplained.ui;
 import learn.unexplained.domain.EncounterResult;
 import learn.unexplained.models.Encounter;
 import learn.unexplained.models.EncounterType;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Scanner;
 
+@Component
 public class View {
 
     private Scanner console = new Scanner(System.in);

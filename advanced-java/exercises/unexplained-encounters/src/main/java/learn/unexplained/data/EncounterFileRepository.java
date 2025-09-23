@@ -2,11 +2,14 @@ package learn.unexplained.data;
 
 import learn.unexplained.models.Encounter;
 import learn.unexplained.models.EncounterType;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class EncounterFileRepository implements EncounterRepository {
 
     private static final String DELIMITER = ",";
@@ -14,7 +17,7 @@ public class EncounterFileRepository implements EncounterRepository {
     private static final String HEADER = "encounter_id,type,when,description,occurrences";
     private final String filePath;
 
-    public EncounterFileRepository(String filePath) {
+    public EncounterFileRepository(@Value("${dataFilePath}") String filePath) {
         this.filePath = filePath;
     }
 
