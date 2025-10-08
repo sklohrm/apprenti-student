@@ -21,7 +21,7 @@ CREATE TABLE Movie (
 );
 
 -- Relationship between movies and actors.
-CREATE TABLE Credit (
+CREATE TABLE Movie_Actor (
     credit_id INT AUTO_INCREMENT PRIMARY KEY,
     movie_id INT NOT NULL,
     actor_id INT NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE Genre (
 );
 
 -- Join movies and genres.
-CREATE TABLE MovieGenre (
+CREATE TABLE Movie_Genre (
     movie_id INT NOT NULL,
     genre_id INT NOT NULL,
     PRIMARY KEY (movie_id, genre_id),

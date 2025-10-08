@@ -76,7 +76,7 @@ SELECT
 -- 12. What grade types appear in the GradeItem table?
 SELECT GradeTypeName FROM GradeType WHERE GradeTypeID IN (
     SELECT GradeTypeID FROM GradeItem
-    );
+);
 
 
 -- 13. What grade types are not utilized in the GradeItem table?
