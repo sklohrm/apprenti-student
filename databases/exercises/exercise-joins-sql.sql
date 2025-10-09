@@ -66,8 +66,8 @@ WHERE R.Description IS NULL;
 SELECT
     C.CourseName as 'Course Name'
 FROM Course C
-INNER JOIN Section S ON S.CourseID = C.CourseID
-INNER JOIN Teacher T ON T.TeacherID = S.TeacherID
+INNER JOIN Section S ON C.CourseID = S.CourseID
+INNER JOIN Teacher T ON S.TeacherID = T.TeacherID
 WHERE
     T.FirstName = 'Geno'
   AND T.LastName = 'Booy'
