@@ -1,0 +1,2 @@
+USE exercise_inserting;
+
