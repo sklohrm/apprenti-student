@@ -44,7 +44,7 @@ FROM customers;
 --    Try filtering using: SELECT * FROM customers WHERE First_Name = 'JOHN';
 SELECT *
 FROM customers
-WHERE First_Name = 'JOHN' -- Not case-sensitive
+WHERE First_Name = 'JOHN'; -- Not case-sensitive
 
 -- Casting
 -- 1. Identify which columns need casting in the orders table.
