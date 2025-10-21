@@ -12,7 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("YO!");
+        SpringApplication.run(App.class, args);
+        System.out.println("Pet REST API is running. Access API at http://localhost:8080/api/pet");
     }
 
 }

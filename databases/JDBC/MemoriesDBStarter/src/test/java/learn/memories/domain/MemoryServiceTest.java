@@ -55,7 +55,7 @@ class MemoryServiceTest {
 
     @Test
     void shouldNotAddPositiveID() throws DataAccessException {
-        Memory memory = new Memory(12, "From12", "Content12", true);
+        Memory memory = new Memory(12, "From12", "Content12", true, 1);
 
         MemoryResult result = service.add(memory);
         assertFalse(result.isSuccess());

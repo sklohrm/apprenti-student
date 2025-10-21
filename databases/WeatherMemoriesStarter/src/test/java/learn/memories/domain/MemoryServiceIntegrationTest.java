@@ -38,7 +38,7 @@ class MemoryServiceIntegrationTest {
         //assertTrue(memories.size() > 0, "Should return records from the JDBC repository.");
 
         // If you are confident your test data setup is exactly 10:
-        assertTrue(memories.size() > 0);
+        assertFalse(memories.isEmpty());
     }
 
     @Test

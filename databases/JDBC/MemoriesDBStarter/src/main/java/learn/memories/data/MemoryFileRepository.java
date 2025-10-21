@@ -106,12 +106,13 @@ public class MemoryFileRepository implements MemoryRepository {
 
     private Memory lineToMemory(String line){
         String[] fields = line.split(delimeter);
-        return new Memory(
-            Integer.parseInt(fields[0]),
-            fields[1],
-            fields[2],
-            "true".equals(fields[3])
-        );
+//        return new Memory(
+//            Integer.parseInt(fields[0]),
+//            fields[1],
+//            fields[2],
+//            "true".equals(fields[3])
+//        );
+        return null;
     }
 
     private String memoryToLine(Memory memory){

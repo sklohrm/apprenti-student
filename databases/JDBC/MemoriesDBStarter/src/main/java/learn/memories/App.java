@@ -1,23 +1,15 @@
 package learn.memories;
 
-import learn.memories.data.MemoryFileRepository;
-import learn.memories.domain.MemoryService;
-import learn.memories.ui.ConsoleIO;
 import learn.memories.ui.Controller;
-import learn.memories.ui.View;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.Console;
-
+@ComponentScan
 public class App {
     public static void main(String[] args) {
-        MemoryFileRepository repository = new MemoryFileRepository("./data/memories.txt");
-        MemoryService service = new MemoryService(repository);
-
-        ConsoleIO io = new ConsoleIO();
-        View view = new View(io);
-
-        Controller controller = new Controller(view, service);
-
+        ApplicationContext context = new ClassPathXmlApplicationContext("dependency-configuration.xml");
+        Controller controller = context.getBean(Controller.class);
         controller.run();
     }
 }

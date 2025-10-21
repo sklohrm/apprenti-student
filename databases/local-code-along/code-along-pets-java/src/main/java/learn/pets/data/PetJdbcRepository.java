@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PetJdbcRepository implements PetRepository {
 
-    private DataSource dataSource = initDataSource();
+    private final DataSource dataSource = initDataSource();
 
     private DataSource initDataSource() {
         MysqlDataSource result = new MysqlDataSource();
