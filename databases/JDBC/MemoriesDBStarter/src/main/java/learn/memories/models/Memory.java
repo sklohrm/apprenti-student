@@ -5,14 +5,16 @@ public class Memory {
     private String from; //Who shared the memory
     private String content; //The Memory Itself
     private boolean shareable; //Whether it is public or private
+    private int userId;
 
     public Memory(){}
 
-    public Memory(int id, String from, String content, boolean shareable){
+    public Memory(int id, String from, String content, boolean shareable, int userId){
         this.id = id;
         this.from = from;
         this.content = content;
         this.shareable = shareable;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -45,5 +47,22 @@ public class Memory {
 
     public void setShareable(boolean shareable) {
         this.shareable = shareable;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Memory ID: " + id
+                + "\nFrom: " + from
+                + "\nContent: " + content
+                + "\nPublic: " + (shareable ? "Yes" : "No")
+                + "\nUser ID: " + userId;
     }
 }

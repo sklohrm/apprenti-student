@@ -9,9 +9,9 @@ public class MemoryRepositoryDouble implements MemoryRepository {
     private List<Memory> memories = new ArrayList<>();
 
     public MemoryRepositoryDouble(){
-        memories.add(new Memory(1, "From 1", "Content1", true));
-        memories.add(new Memory(2, "From 2", "Content2", true));
-        memories.add(new Memory(3, "From 3", "Content3", false));
+        memories.add(new Memory(1, "From 1", "Content1", true, 1));
+        memories.add(new Memory(2, "From 2", "Content2", true, 2));
+        memories.add(new Memory(3, "From 3", "Content3", false, 3));
     }
 
     @Override
