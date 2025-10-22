@@ -1,0 +1,22 @@
+table {
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    font-family: TX02 Nerd Font, Arial, sans-serif;
+}
+
+th {
+    background-color: gold;
+}
+
+.totals {
+    background-color: lightgrey;
+}
+
+h1 {
+    font-family: TX02 Nerd Font, Arial, sans-serif;
+}

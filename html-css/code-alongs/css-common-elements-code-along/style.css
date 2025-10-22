@@ -1,0 +1,34 @@
+body {
+    font-family:
+        TX02 Nerd Font,
+        Arial;
+}
+
+h1 {
+    font-family: Arial;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.styled-text {
+    font-size: 30;
+    font-style: italic;
+    font-weight: 100;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: greenyellow;
+    font-weight: bold;
+}
+
+.layout-text {
+    text-align: justify;
+    line-height: 5;
+}
+
+.styled-list {
+    list-style-type: square;
+    list-style-position: inside;
+}

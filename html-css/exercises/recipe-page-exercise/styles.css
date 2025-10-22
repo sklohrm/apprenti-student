@@ -1,0 +1,38 @@
+h1 {
+    color: darkblue;
+    text-align: center;
+}
+h2 {
+    color: darkred;
+}
+p {
+    line-height: 1.6;
+}
+img {
+    height: 400px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 6px;
+}
+figure {
+    width: 45%;
+    display: block;
+    margin: 0 auto;
+    background-color: lightgray;
+}
+.ingredients {
+    background-color: lightgray;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.instructions {
+    margin-top: 50px;
+}
+#description {
+    margin-left: 6px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    text-orientation: left;
+}

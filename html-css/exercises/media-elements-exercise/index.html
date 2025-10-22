@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Media Elements</title>
+    </head>
+    <body>
+        <h2>Insert an Image</h2>
+        <img
+            src="assets/apple-touch-icon.jpg"
+            alt="apple logo"
+            style="width: 200px; height 200px;"
+        />
+        <h2>Embed a video</h2>
+        <video
+            controls
+            width="400"
+            height="300"
+            poster="assets/apple-touch-icon.jpg"
+        >
+            <source
+                src="assets/file_example_MP4_480_1_5MG.mp4"
+                type="video/mp4"
+            />
+            <p>Your browser does not support the video tag.</p>
+        </video>
+        <h2>Add an audio file</h2>
+        <audio controls>
+            <source src="assets/May I show you my wares.wav" type="audio/wav" />
+        </audio>
+        <h2>Embed a YouTube video.</h2>
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/e_vWB5bdbeE"
+            title="YouTube video player"
+            allowfullscreen
+        >
+        </iframe>
+    </body>
+</html>
+<!--
+How does using alt text improve accessibility?
+Alt text is used by screen readers for visually impaired users.
+
+Why should you use multiple <source> elements for video and audio?
+Each media element should have it's own source element. You could use the same file in multiple
+formats to ensure that users can access the content depending on their browser.
+
+What are the advantages of embedding a YouTube video instead of hosting it directly?
+Embedding a YouTube video allows you to use their storage and bandwidth to show the video,
+hosting it locally would take a lot more data.
+-->
