@@ -1,0 +1,104 @@
+html {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#paragraph-1 {
+    font-style: italic;
+}
+
+h1, p {
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+}
+
+p {
+    text-indent: 30px;
+}
+
+.unordered-list {
+    list-style-type: square;
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+.unordered-list li {
+    margin-bottom: 10px;
+}
+
+.ordered-list {
+    list-style-type: upper-roman;
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+.ordered-list li {
+    margin-bottom: 10px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Link states */
+.main-nav a:visited {
+    color: yellow;
+}
+
+.main-nav a:hover {
+    color: #f7c59f;
+    transform: scale(1.05);
+}
+
+.main-nav a:focus {
+    outline: 2px solid #f7c59f;
+}
+
+.main-nav a:active {
+    color: #e6b07c;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+/*
+What happens if you use a custom font that is not installed on a user's device?
+It will fallback to the next font specified or a default.
+*/
+
+/*
+What is the difference between list-style-type:none and list-style-position: inside?
+line-style-type:none removes the bullets or numbers
+list-style-position: inside keeps bullets, but moved them inside the text block
+*/
+
+/*
+Why is it important to use fallback fonts in CSS?
+As a backup for users that don't have the specified font. Increases compatability.
+
+How do spacing and alignment impact the readability of text?
+Adding space makes it easier to read each word. Proper alignment and justification can make
+it easier to read by putting the font in a better position.
+
+How can pseudo-classes improve user experience with links?
+Changing the style of links in different states using pseudo-classes can make it easier for the user
+to determine what state the link is in.
+
+Why should images be styled carefully to maintain aspect ratio?
+Because stretched images look awful!
+
+*/
