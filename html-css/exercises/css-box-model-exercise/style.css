@@ -1,0 +1,42 @@
+/*Experiment Further: Convert an element to inline-block and
+compare its behavior to block and inline elements.*/
+h1 {
+    background-color: brown;
+    color: green;
+    display: inline-block;
+}
+
+p {
+    background-color: brown;
+}
+
+/*
+Inline Element: Initially, style it with a distinct background color and
+padding.
+
+Transforming Display: Change the inline element’s display property to
+block and observe the layout shift.
+*/
+span {
+    background-color: yellowgreen;
+    padding: 30px;
+    display: block;
+}
+
+/*Block-Level Element: Apply a background color, padding, and a border.*/
+section {
+    background-color: brown;
+    padding: 30px;
+    border: 15px dashed green;
+    color: white;
+}
+
+/*
+What specific changes occur in the layout when an element’s display
+property is changed from inline to block or inline-block?
+
+Inline flows with the line of text or elements before an after it. Padding and margin don't affect it.
+Block moves the element down to it's own line.
+Block-Inline lets the element't padding, margin, placement act like a block element, but it is placed
+on the page like an inline element.
+*/
