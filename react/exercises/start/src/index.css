@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply flex justify-center pt-8;
+  }
+
+  section {
+    @apply flex flex-col my-4;
+  }
+
+  input[type="checkbox"],
+  input[type="checkbox"] + label {
+    @apply mr-2;
+  }
+
+  td,
+  th {
+    @apply text-left;
+  }
+
+  td {
+    @apply pr-2 py-1;
+  }
+}
+
+@layer components {
+  .checkbox-container {
+    @apply flex mt-4;
+  }
+}
